@@ -1,7 +1,5 @@
 
-// randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
-
-// can use a combination of JavaScript's Math.random() function and conditional statements
+    // randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -14,3 +12,19 @@ function getComputerChoice() {
         return "Scissors";
       }
     }
+
+    // Plays a single round of Rock Paper Scissors. 
+    // The function takes two parameters - the playerSelection and computerSelection 
+    // then returns a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
+    // playerSelection parameter is case-insensitive (so users can input rock, ROCK, RocK or any other variation).
+
+function singleRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection.toLowerCase() === "rock" && computerSelection === "Paper") {
+        return "You Lose! Paper beats Rock";
+    } else if (playerSelection.toLowerCase() === "paper" && computerSelection === "Scissors") {
+        return "You Lose! Scissors beats Paper"; 
+    } else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "Rock") {
+        return "You Lose! Rock beats Scissors";
+    }
+}
