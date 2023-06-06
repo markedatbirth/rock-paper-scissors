@@ -1,4 +1,6 @@
 
+/*
+
     // randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
 
 function getComputerChoice() {
@@ -47,5 +49,62 @@ function game() {
     console.log(playRound(playerSelection, computerSelection));
 }
 
-          
+*/
     
+
+function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 3);
+  
+    if (randomNumber === 0) {
+      return "Rock";
+    } else if (randomNumber === 1) {
+      return "Paper";
+    } else {
+      return "Scissors";
+    }
+  }
+  
+  function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+  
+    for (let round = 1; round <= 5; round++) {
+      let playerSelection = prompt("Round " + round + ": Rock, Paper, or Scissors?", undefined);
+      let computerSelection = getComputerChoice();
+  
+      function playRound(playerSelection, computerSelection) {
+        playerSelection = playerSelection.toLowerCase();
+  
+        if (
+          (playerSelection === "rock" && computerSelection === "Scissors") ||
+          (playerSelection === "paper" && computerSelection === "Rock") ||
+          (playerSelection === "scissors" && computerSelection === "Paper")
+        ) {
+          playerScore++;
+          return "You Win! " + playerSelection + " beats " + computerSelection;
+        } else if (
+          (playerSelection === "rock" && computerSelection === "Paper") ||
+          (playerSelection === "paper" && computerSelection === "Scissors") ||
+          (playerSelection === "scissors" && computerSelection === "Rock")
+        ) {
+          computerScore++;
+          return "You Lose! " + computerSelection + " beats " + playerSelection;
+        } else {
+          return "Draw! You both selected " + playerSelection;
+        }
+      }
+  
+      console.log(playRound(playerSelection, computerSelection));
+    }
+  
+    if (playerScore > computerScore) {
+      console.log("You Win the Game!");
+    } else if (playerScore < computerScore) {
+      console.log("You Lose the Game!");
+    } else {
+      console.log("It's a Draw!");
+    }
+  }
+  
+  game();
+  
