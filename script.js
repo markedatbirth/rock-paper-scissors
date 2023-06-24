@@ -1,5 +1,10 @@
 
-function getComputerChoice() { // PC Chooses Rock, Paper, or Scissors. 
+let playerScore = 0;
+let computerScore = 0;
+
+
+// PC Chooses Rock, Paper, or Scissors. 
+function getComputerChoice() { 
   let computerSelection = Math.floor(Math.random() * 3);
     if (computerSelection === 0) {
       return "rock";
@@ -10,9 +15,8 @@ function getComputerChoice() { // PC Chooses Rock, Paper, or Scissors.
     }
 }
 
-function playRound(playerSelection, computerSelection) { //Play round proceeds and round winner is selected.
-    let playerScore = 0;
-    let computerScore = 0;
+//Single play round proceeds and round winner is selected.
+function playRound(playerSelection, computerSelection) { 
     playerSelection = playerSelection.toLowerCase();
       if (playerSelection === "rock" && computerSelection === "scissors") {
           playerScore++;
@@ -33,29 +37,27 @@ function playRound(playerSelection, computerSelection) { //Play round proceeds a
           computerScore++;
           return "You LOSE! Rock beats Scissors!" + " / Player Score: " + playerScore + " / Computer Score: " + computerScore;
       } else if (playerSelection === computerSelection) {
-          return "Draw!" + " / Player Score: " + playerScore + " / Computer Score: " + computerScore;
+          return "DRAW!" + " / Player Score: " + playerScore + " / Computer Score: " + computerScore;
       } else {
-          return "Please enter Rock, Paper, or Scissors.";
+          return "Please enter \"Rock\", \"Paper\", or \"Scissors.\"";
       }
-
 }
 
 function game() {
-  let playerSelection = prompt("Rock, Paper, or Scissors?", "");
-  const computerSelection = getComputerChoice();
-  const roundWinner = playRound(playerSelection, computerSelection);
-  console.log(playRound(playerSelection, computerSelection));
+  for (let rounds = 0; rounds < 5; rounds++) {
+    let playerSelection = prompt("Rock, Paper, or Scissors?", "");
+    const computerSelection = getComputerChoice();
+    const roundWinner = playRound(playerSelection, computerSelection);
+    console.log(roundWinner);
+  }
+
+  if (computerScore > playerScore) {
+    return "You LOSE! Player Score: " + playerScore + " / Computer Score: " + computerScore;
+  } else if (playerScore > computerScore) {
+    return "You WIN! Player Score: " + playerScore + " / Computer Score: " + computerScore;
+  } else {
+    return "DRAW! Player Score: " + playerScore + " / Computer Score: " + computerScore;
+  }
 }
 
- 
-game();
-game();
-game();
-game();
-game();
-
-
-
-
-
-
+console.log(game());
